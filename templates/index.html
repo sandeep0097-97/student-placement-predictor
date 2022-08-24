@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+    <meta charset="UTF-8">
+    <title>Student Placement Predictor</title>
 </head>
-
 <body>
- <div class="login">
-	<h1>Predict Salary Analysis</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+    <h1>Student Placement Predictor</h1>
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+    <form method="post" action="/predict">
+        <label>CGPA</label><br>
+        <input type="text" name="cgpa"><br><br>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        <label>IQ</label><br>
+        <input type="text" name="iq"><br><br>
+
+        <label>Profile Score</label><br>
+        <input type="text" name="profile_score"><br><br>
+
+        <input type="submit" value="Predict"><br><br>
     </form>
-
-   <br>
-   <br>
-   {{ prediction_text }}
-
- </div>
-
 
 </body>
 </html>
